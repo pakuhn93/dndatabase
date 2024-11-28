@@ -3,9 +3,14 @@ const parseTSV = (tsvText) => {
   const headers = rows[0].split('\t'); // Extract headers assuming first row is header row
   const data = []; // Initialize array to store parsed data
 
+  // ensure the header titles are code-friendly format
+  for(let i = 0; i < headers.length; i++){
+    headers[i].toLowerCase();
+  }
+
   console.log("Parsing TSV Data...");
 
-  for(let i = 1; i < rows.length; i++){ // ensure we're starting at rows[1] instead of rows[0] b/c those are our headers
+  for(let i = 1; i < rows.length; i++){ // i = 1 to ensure we're starting at rows[1] instead of rows[0] b/c those are our headers
       const rowData = rows[i].split('\t'); // Establishing the rows with an array by splitting via ',' characters
       const rowObject = {};
       for(let j = 0; j < headers.length; j++){

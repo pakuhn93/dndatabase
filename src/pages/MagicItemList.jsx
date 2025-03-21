@@ -1,7 +1,17 @@
+import { useEffect } from "react";
+import { checkQuery } from "../utils/checkQuery";
+
 export default function MagicItemList(){
+  const myFunc = () => {
+    checkQuery("testing");
+  }
+  // useEffect(() => {
+  //   checkQuery("item-name");
+  // }, []);
+
   return(
     <>
-      <p>This is my Magic Item List.</p>
+      <button onClick={() => myFunc()}>Click Me!!</button>
     </>
   );
 }

@@ -1,11 +1,12 @@
 const parseTSV = (tsvText) => {
   const rows = tsvText.split(/\r?\n/); // Split CSV into rows by detecting the \r and \n characters
-  const headers = rows[0].split('\t'); // Extract headers assuming first row is header row
+  // Extract headers assuming first row is header row and
+  let headers = rows[0].split('\t');
   const data = []; // Initialize array to store parsed data
 
-  // ensure the header titles are code-friendly format
+  // ensure the header titles are code-friendly format (there's probably a way to do this in one line)
   for(let i = 0; i < headers.length; i++){
-    headers[i].toLowerCase();
+    headers[i] = headers[i].toLowerCase();
   }
 
   console.log("Parsing TSV Data...");

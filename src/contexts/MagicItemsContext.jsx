@@ -55,7 +55,6 @@ export function MagicItemsProvider({ children }){
   console.log("ITEMS:", magicItems);
 
   useEffect(() => {
-    console.log("===== USE EFFECT =====");
     updateMagicItems();
 }, []);
 

@@ -1,20 +1,12 @@
 import { useEffect, useState } from "react";
-import { useMagicItems } from "../contexts/MagicItemsContext";
 
-export default function MagicItem(){
-  const magicItems = useMagicItems();
+export default function MagicItem(props){
+
+  console.log("MAGIC ITEM:", props);
 
   return(
     <>
-      {
-        magicItems.map((magicItem, index) => {
-          return(
-            <p key={"magic_item_" + index + magicItem.Item}>
-              {magicItem.Item != undefined ? `${magicItem.Item}` : "Loading Magic Items..."}
-              </p>
-          );
-        })
-      }
+      <p>{props.name != undefined ? `${props.name}` : "Loading Magic Item..."}</p>
     </>
   );
 }

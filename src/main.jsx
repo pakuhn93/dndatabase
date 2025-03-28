@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // pages included on the website
 import Home from './pages/Home.jsx';
 import MagicItemList from './pages/MagicItemList.jsx';
+import HP_Calc from './pages/HP_Calc.jsx';
 
 // initialize the router
 const router = createBrowserRouter([
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
       {
         path: '/dndatabase/MagicItemList',
         element: <MagicItemList />
-      }
+      },
+      {
+        path: '/dndatabase/HP_Calc',
+        element: <HP_Calc />
+      }   
     ]
   }
 ]);

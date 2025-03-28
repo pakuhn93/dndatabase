@@ -1,0 +1,91 @@
+{
+    "primaryAbility": "Strength",
+    "hitDie": "1d12",
+    "savingThrows": {
+        "strength": true,
+        "dexterity": false,
+        "constitution": true,
+        "intellgence": false,
+        "wisdom": false,
+        "charisma": false
+    },
+    "skillProficiencies": {
+        "acrobatics": false,
+        "animalHandling": true,
+        "arcana": false,
+        "athletics": true,
+        "deception": false,
+        "history": false,
+        "insight": false,
+        "intimidation": true,
+        "investigation": false,
+        "medicine": false,
+        "nature": true,
+        "perception": false,
+        "performance": false,
+        "persuasion": false,
+        "religion": false,
+        "sleightOfHand": false,
+        "stealth": false,
+        "survival": false
+    },
+    "weaponProficiencies": {
+        "battleaxe": true,
+        "blowgun": true,
+        "club": true,
+        "dagger": true,
+        "dart": true,
+        "flail": true,
+        "glaive": true,
+        "greataxe": true,
+        "greatclub": true,
+        "greatsword": true,
+        "halberd": true,
+        "handCrossbow": true,
+        "handaxe": true,
+        "heavyCrossbow": true,
+        "javelin": true,
+        "lance": true,
+        "lightCrossbow": true,
+        "lightHammer": true,
+        "longbow": true,
+        "longsword": true,
+        "mace": true,
+        "maul": true,
+        "morningstar": true,
+        "musket": true,
+        "pike": true,
+        "pistol": true,
+        "quarterstaff": true,
+        "rapier": true,
+        "scimitar": true,
+        "shortbow": true,
+        "shortsword": true,
+        "sickle": true,
+        "sling": true,
+        "spear": true,
+        "trident": true,
+        "warPick": true,
+        "warhammer": true,
+        "whip": true
+    },
+    "armorTraining": {
+        "light": true,
+        "medium": true,
+        "heavy": false
+    },
+    "startingEquipment_A": {
+        "gold": 15,
+        "items": [
+            "Greataxe",
+            "Handaxe",
+            "Handaxe",
+            "Handaxe",
+            "Handaxe",
+            "Explorer's Pack"
+        ]
+    },
+    "startingEquipment_B": {
+        "gold": 0
+    }
+}

@@ -1,4 +1,7 @@
-const calcHP = () => {
+const calcHP = (...data) => {
+    // initialize the variable we will be returning
+    let totalHP = -1;
+    
     // Below are the things that will be needed for this to work.
     // Level 1 Class HP
         // LET baseClass variable
@@ -14,12 +17,14 @@ const calcHP = () => {
     // Dwarf
         // LET isDwarf T/F
 
-        
+
     // Extra Features
         // take in a numerical value
 
 
     // FUTURE: Multiclass T/F in the form
+
+    return totalHP;
 }
 
 export { calcHP };

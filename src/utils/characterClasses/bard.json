@@ -1,0 +1,101 @@
+{
+    "primaryAbility": "Charisma",
+    "hitDie": "1d8",
+    "savingThrows": {
+        "strength": false,
+        "dexterity": true,
+        "constitution": false,
+        "intellgence": false,
+        "wisdom": false,
+        "charisma": true
+    },
+    "skillProficiencies": {
+        "acrobatics": true,
+        "animalHandling": true,
+        "arcana": true,
+        "athletics": true,
+        "deception": true,
+        "history": true,
+        "insight": true,
+        "intimidation": true,
+        "investigation": true,
+        "medicine": true,
+        "nature": true,
+        "perception": true,
+        "performance": true,
+        "persuasion": true,
+        "religion": true,
+        "sleightOfHand": true,
+        "stealth": true,
+        "survival": true
+    },
+    "weaponProficiencies": {
+        "battleaxe": false,
+        "blowgun": false,
+        "club": true,
+        "dagger": true,
+        "dart": true,
+        "flail": false,
+        "glaive": false,
+        "greataxe": false,
+        "greatclub": true,
+        "greatsword": false,
+        "halberd": false,
+        "handCrossbow": false,
+        "handaxe": true,
+        "heavyCrossbow": false,
+        "javelin": true,
+        "lance": false,
+        "lightCrossbow": true,
+        "lightHammer": true,
+        "longbow": false,
+        "longsword": false,
+        "mace": true,
+        "maul": false,
+        "morningstar": false,
+        "musket": false,
+        "pike": false,
+        "pistol": false,
+        "quarterstaff": true,
+        "rapier": false,
+        "scimitar": false,
+        "shortbow": true,
+        "shortsword": false,
+        "sickle": true,
+        "sling": true,
+        "spear": true,
+        "trident": false,
+        "warPick": false,
+        "warhammer": false,
+        "whip": false
+    },
+    "armorTraining": {
+        "light": true,
+        "medium": false,
+        "heavy": false
+    },
+    "startingEquipment_A": {
+        "gold": 0,
+        "items": [
+            ""
+        ]
+    },
+    "startingEquipment_B": {
+        "gold": 0,
+        "items": [
+            ""
+        ]
+    },
+    "startingEquipment_C": {
+        "gold": 0,
+        "items": [
+            ""
+        ]
+    },
+    "startingEquipment_CUSTOM": {
+        "gold": 0,
+        "items": [
+            ""
+        ]
+    }
+}

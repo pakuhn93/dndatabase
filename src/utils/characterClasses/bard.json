@@ -1,4 +1,5 @@
 {
+    "name": "Bard",
     "primaryAbility": "Charisma",
     "hitDie": "1d8",
     "savingThrows": {

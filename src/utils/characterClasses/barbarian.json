@@ -1,4 +1,5 @@
 {
+    "name": "Barbarian",
     "primaryAbility": "Strength",
     "hitDie": "1d12",
     "savingThrows": {

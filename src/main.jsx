@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import MagicItemList from './pages/MagicItemList.jsx';
 import HP_Calc from './pages/HP_Calc.jsx';
+import InitiativeTracker from './pages/initiativeTracker.jsx';
 
 // initialize the router
 const router = createBrowserRouter([
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       {
         path: '/dndatabase/HP_Calc',
         element: <HP_Calc />
-      }   
+      },
+      {
+        path: '/dndatabase/initiativeTracker',
+        element: <InitiativeTracker />
+      }
     ]
   }
 ]);

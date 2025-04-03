@@ -56,8 +56,11 @@ export default function HP_Calc(){
   }
 
   useEffect(() => {
-    console.log("PAGE UPDATED.");
-    setTotalHP(startingClass + (classHP*(levelTotal-1)) + (modifierCON*levelTotal));
+    if(levelTotal > 0){
+      setTotalHP(startingClass + (classHP*(levelTotal-1)) + (modifierCON*levelTotal));
+    } else { 
+      setTotalHP(0);
+    }
   }, [startingClass, classHP, modifierCON, levelTotal]);
   
   

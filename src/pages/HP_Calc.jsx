@@ -6,6 +6,12 @@ export default function HP_Calc(){
   const [modifierCON, setModifierCON] = useState(0);
   const [levelTotal, setLevelTotal] = useState(0);
   const [totalHP, setTotalHP] = useState(0);  // FUTURE: Add multiclass calculation.
+  const [isDraconicSorc, setIsDraconicSorc] = useState({isTrue: false, value: 1});
+  const [isDwarf, setIsDwarf] = useState({isTrue: false, value: 1});
+  const [isTough, setIsTough] = useState({isTrue: false, value: 2});
+  const [hpPerLevel, setHpPerLevel] = useState(0);
+  const displayCalc = 
+  "[ " + "(Starting class HP = " + startingClass + ") + (HP gained from class after 1st level = " + (classHP*(levelTotal-1) + ") + (HP gained from Constitution modifier = ") + (modifierCON*levelTotal) + ") ]";
 
   const hitDieAvg = (hitDie) => {
     switch(hitDie){
@@ -55,19 +61,52 @@ export default function HP_Calc(){
     setModifierCON(e.target.value);
   }
 
+  const updateHpBonusPerLevel = () => {
+    
+  }
+
+  const updateIsDraconicSorc = () => {
+    setIsDraconicSorc(prevObj => ({...prevObj, isTrue: !prevObj.isTrue}));
+  }
+
+  const updateIsDwarf = () => {
+    setIsDwarf(prevObj => ({...prevObj, isTrue: !prevObj.isTrue}));
+  }
+
+  const updateIsTough = () => {
+    setIsTough(prevObj => ({...prevObj, isTrue: !prevObj.isTrue}));
+  }
+
   useEffect(() => {
+    
+
     if(levelTotal > 0){
-      setTotalHP(startingClass + (classHP*(levelTotal-1)) + (modifierCON*levelTotal));
+      let baseHP = startingClass + (classHP*(levelTotal-1)) + (modifierCON*levelTotal);
+
+      isDraconicSorc.isTrue ? baseHP += (isDraconicSorc.value*levelTotal) : null;
+      isDwarf.isTrue ? baseHP += (isDwarf.value*levelTotal) : null;
+      isTough.isTrue ? baseHP += (isTough.value*levelTotal) : null;
+      // Had to convert levelTotal to Number with the + operator for some reason.
+      setTotalHP(baseHP);
+
+        // if(isTough && isDwarf && isDraconicSorc){
+        //   // 1st Level + Class + CON + Tough + Dwarf + DracSorc
+        //   setTotalHP(
+        //     startingClass + (classHP*(levelTotal-1)) + (modifierCON*levelTotal) + (2*levelTotal) + (+levelTotal) + (+levelTotal)
+        //   );
+        // } 
+
     } else { 
       setTotalHP(0);
     }
-  }, [startingClass, classHP, modifierCON, levelTotal]);
+  }, [startingClass, classHP, modifierCON, levelTotal, isDraconicSorc, isDwarf, isTough]);
   
   
   // FUTURE: Change the option elements to a React mapped list, where the class information is imported from elsewhere.
   return(
     <div>
-      <p>Total Hit Points: { totalHP }</p>
+      <p>Total HP: { totalHP }</p>
+      <p>{displayCalc}</p>
       <label htmlFor="startingClass">Select your starting class.</label>
       <br></br>
       <select id="startingClass" onChange={updateStartingClass}>
@@ -97,7 +136,22 @@ export default function HP_Calc(){
       <br></br>
       <label htmlFor="modifierCON">What is your Constitution modifier?</label>
       <br></br>
-      <input id="modifierCON" type="number" step="1" min="0" max="10" onChange={updateModifierCON}></input>
+      <input id="modifierCON" type="number" step="1" min="-10" max="10" onChange={updateModifierCON}></input>
+      
+      <br></br>
+      <br></br>
+      <label htmlFor="isDraconicSorc">Subclass: Draconic Sorcerer </label>
+      <input id="isDraconicSorc" type="checkbox" onChange={updateIsDraconicSorc}></input>
+
+      <br></br>
+      <br></br>
+      <label htmlFor="isDwarf">Species: Dwarf </label>
+      <input id="isDwarf" type="checkbox" onChange={updateIsDwarf}></input>
+
+      <br></br>
+      <br></br>
+      <label htmlFor="isTough">Feat: Tough </label>
+      <input id="isTough" type="checkbox" onChange={updateIsTough}></input>
 
     </div>
   );

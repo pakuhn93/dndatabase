@@ -9,9 +9,11 @@ export default function HP_Calc(){
   const [isDraconicSorc, setIsDraconicSorc] = useState({isTrue: false, value: 1});
   const [isDwarf, setIsDwarf] = useState({isTrue: false, value: 1});
   const [isTough, setIsTough] = useState({isTrue: false, value: 2});
-  const [hpPerLevel, setHpPerLevel] = useState(0);
-  const displayCalc = 
-  "[ " + "(Starting class HP = " + startingClass + ") + (HP gained from class after 1st level = " + (classHP*(levelTotal-1) + ") + (HP gained from Constitution modifier = ") + (modifierCON*levelTotal) + ") ]";
+  const [isMulticlass, setIsMulticlass] = useState(false);
+
+  const [displayCalc, setDisplayCalc] = useState("[ Calculation will be displayed here. ]");
+  // const displayCalc = 
+  // "[ " + "(Starting class HP = " + startingClass + ") + (HP gained from class after 1st level = " + (classHP*(levelTotal-1) + ") + (HP gained from Constitution modifier = ") + (modifierCON*levelTotal) + ") ]";
 
   const hitDieAvg = (hitDie) => {
     switch(hitDie){
@@ -61,10 +63,6 @@ export default function HP_Calc(){
     setModifierCON(e.target.value);
   }
 
-  const updateHpBonusPerLevel = () => {
-    
-  }
-
   const updateIsDraconicSorc = () => {
     setIsDraconicSorc(prevObj => ({...prevObj, isTrue: !prevObj.isTrue}));
   }
@@ -76,9 +74,12 @@ export default function HP_Calc(){
   const updateIsTough = () => {
     setIsTough(prevObj => ({...prevObj, isTrue: !prevObj.isTrue}));
   }
+  
+  const updateIsMulticlass = () => {
+    setIsMulticlass(!isMulticlass);
+  }
 
   useEffect(() => {
-    
 
     if(levelTotal > 0){
       let baseHP = startingClass + (classHP*(levelTotal-1)) + (modifierCON*levelTotal);
@@ -89,6 +90,12 @@ export default function HP_Calc(){
       // Had to convert levelTotal to Number with the + operator for some reason.
       setTotalHP(baseHP);
 
+      isMulticlass ? 
+        setDisplayCalc("Multiclass calculation.") :
+        setDisplayCalc(
+          "[ " + "(Starting class HP = " + startingClass + ") + (HP gained from class after 1st level = " + (classHP*(levelTotal-1) + ") + (HP gained from Constitution modifier = ") + (modifierCON*levelTotal) + ") ]"
+        );
+
         // if(isTough && isDwarf && isDraconicSorc){
         //   // 1st Level + Class + CON + Tough + Dwarf + DracSorc
         //   setTotalHP(
@@ -97,62 +104,79 @@ export default function HP_Calc(){
         // } 
 
     } else { 
+      setDisplayCalc("[ Calculation will be displayed here. ]");
       setTotalHP(0);
     }
-  }, [startingClass, classHP, modifierCON, levelTotal, isDraconicSorc, isDwarf, isTough]);
+  }, [startingClass, classHP, modifierCON, levelTotal, isDraconicSorc, isDwarf, isTough, isMulticlass]);
   
   
-  // FUTURE: Change the option elements to a React mapped list, where the class information is imported from elsewhere.
+  // FUTURE: Change the option elements to a React mapped list, where the class information is imported from the characterClasses folder or equivalent.
   return(
-    <div>
-      <p>Total HP: { totalHP }</p>
-      <p>{displayCalc}</p>
-      <label htmlFor="startingClass">Select your starting class.</label>
-      <br></br>
-      <select id="startingClass" onChange={updateStartingClass}>
-        <option value="1d8">Artificer</option>
-        <option value="1d12">Barbarian</option>
-        <option value="1d8">Bard</option>
-        <option value="1d8">Cleric</option>
-        <option value="1d8">Druid</option>
-        <option value="1d10">Fighter</option>
-        <option value="1d8">Monk</option>
-        <option value="1d10">Paladin</option>
-        <option value="1d10">Ranger</option>
-        <option value="1d8">Rogue</option>
-        <option value="1d6">Sorcerer</option>
-        <option value="1d8">Warlock</option>
-        <option value="1d6">Wizard</option>
-      </select>
-
-      <br></br>
+    <section>
+      <div>
+        <p>Total HP: { totalHP }</p>
+        <p>{displayCalc}</p>
+        <label htmlFor="isMulticlass">Is your character multiclassed?</label>
+        <input id="isMulticlass" type="checkbox" onChange={updateIsMulticlass}></input>
+      </div>
       <br></br>
 
-      <label htmlFor="levelTotal">What is your character's level?</label>
-      <br></br>
-      <input id="levelTotal" type="number" step="1" min="1" max="20" onChange={updateLevelTotal}></input>
+      {
+        isMulticlass ? 
+        (
+          <p>Yes, we are multiclassed!</p>
+        ) :
+        (
+          <div>
+            <label htmlFor="startingClass">Select your starting class.</label>
+            <br></br>
+            <select id="startingClass" onChange={updateStartingClass}>
+              <option value="1d8">Artificer</option>
+              <option value="1d12">Barbarian</option>
+              <option value="1d8">Bard</option>
+              <option value="1d8">Cleric</option>
+              <option value="1d8">Druid</option>
+              <option value="1d10">Fighter</option>
+              <option value="1d8">Monk</option>
+              <option value="1d10">Paladin</option>
+              <option value="1d10">Ranger</option>
+              <option value="1d8">Rogue</option>
+              <option value="1d6">Sorcerer</option>
+              <option value="1d8">Warlock</option>
+              <option value="1d6">Wizard</option>
+            </select>
 
-      <br></br>
-      <br></br>
-      <label htmlFor="modifierCON">What is your Constitution modifier?</label>
-      <br></br>
-      <input id="modifierCON" type="number" step="1" min="-10" max="10" onChange={updateModifierCON}></input>
-      
-      <br></br>
-      <br></br>
-      <label htmlFor="isDraconicSorc">Subclass: Draconic Sorcerer </label>
-      <input id="isDraconicSorc" type="checkbox" onChange={updateIsDraconicSorc}></input>
+            <br></br>
+            <br></br>
 
-      <br></br>
-      <br></br>
-      <label htmlFor="isDwarf">Species: Dwarf </label>
-      <input id="isDwarf" type="checkbox" onChange={updateIsDwarf}></input>
+            <label htmlFor="levelTotal">What is your character's level?</label>
+            <br></br>
+            <input id="levelTotal" type="number" step="1" min="1" max="20" onChange={updateLevelTotal}></input>
 
-      <br></br>
-      <br></br>
-      <label htmlFor="isTough">Feat: Tough </label>
-      <input id="isTough" type="checkbox" onChange={updateIsTough}></input>
+            <br></br>
+            <br></br>
+            <label htmlFor="modifierCON">What is your Constitution modifier?</label>
+            <br></br>
+            <input id="modifierCON" type="number" step="1" min="-10" max="10" onChange={updateModifierCON}></input>
+            
+            <br></br>
+            <br></br>
+            <label htmlFor="isDraconicSorc">Subclass: Draconic Sorcerer </label>
+            <input id="isDraconicSorc" type="checkbox" onChange={updateIsDraconicSorc}></input>
 
-    </div>
+            <br></br>
+            <br></br>
+            <label htmlFor="isDwarf">Species: Dwarf </label>
+            <input id="isDwarf" type="checkbox" onChange={updateIsDwarf}></input>
+
+            <br></br>
+            <br></br>
+            <label htmlFor="isTough">Feat: Tough </label>
+            <input id="isTough" type="checkbox" onChange={updateIsTough}></input>
+
+          </div>
+        )
+      }
+    </section>
   );
 }

@@ -1,0 +1,13 @@
+{
+    "name": "Druid",
+    "primaryAbility": "Wisdom",
+    "hitDie": "1d8",
+    "savingThrows": {
+        "strength": false,
+        "dexterity": false,
+        "constitution": false,
+        "intelligence": true,
+        "wisdom": true,
+        "charisma": false
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Sorcerer",
+    "primaryAbility": "Charisma",
+    "hitDie": "1d6",
+    "savingThrows": {
+        "strength": false,
+        "dexterity": false,
+        "constitution": true,
+        "intelligence": false,
+        "wisdom": false,
+        "charisma": true
+    }
+}

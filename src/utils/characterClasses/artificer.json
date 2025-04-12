@@ -1,0 +1,13 @@
+{
+    "name": "Artificer",
+    "primaryAbility": "Intelligence",
+    "hitDie": "1d8",
+    "savingThrows": {
+        "strength": false,
+        "dexterity": false,
+        "constitution": true,
+        "intelligence": true,
+        "wisdom": false,
+        "charisma": false
+    }
+}

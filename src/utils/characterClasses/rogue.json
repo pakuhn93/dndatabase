@@ -1,0 +1,13 @@
+{
+    "name": "Rogue",
+    "primaryAbility": "Dexterity",
+    "hitDie": "1d8",
+    "savingThrows": {
+        "strength": false,
+        "dexterity": true,
+        "constitution": false,
+        "intelligence": true,
+        "wisdom": false,
+        "charisma": false
+    }
+}

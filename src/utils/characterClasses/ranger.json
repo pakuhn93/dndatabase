@@ -1,0 +1,13 @@
+{
+    "name": "Ranger",
+    "primaryAbility": "Dexterity and Wisdom",
+    "hitDie": "1d10",
+    "savingThrows": {
+        "strength": true,
+        "dexterity": true,
+        "constitution": false,
+        "intelligence": false,
+        "wisdom": false,
+        "charisma": false
+    }
+}

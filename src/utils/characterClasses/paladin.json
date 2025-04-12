@@ -1,0 +1,13 @@
+{
+    "name": "Paladin",
+    "primaryAbility": "Strength and Charisma",
+    "hitDie": "1d10",
+    "savingThrows": {
+        "strength": false,
+        "dexterity": false,
+        "constitution": false,
+        "intelligence": false,
+        "wisdom": true,
+        "charisma": true
+    }
+}

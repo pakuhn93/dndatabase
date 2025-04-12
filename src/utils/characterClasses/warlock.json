@@ -1,0 +1,13 @@
+{
+    "name": "Warlock",
+    "primaryAbility": "Charisma",
+    "hitDie": "1d8",
+    "savingThrows": {
+        "strength": false,
+        "dexterity": false,
+        "constitution": false,
+        "intelligence": false,
+        "wisdom": true,
+        "charisma": true
+    }
+}

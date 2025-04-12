@@ -1,0 +1,13 @@
+{
+    "name": "Fighter",
+    "primaryAbility": "Strength of Dexterity",
+    "hitDie": "1d10",
+    "savingThrows": {
+        "strength": true,
+        "dexterity": false,
+        "constitution": true,
+        "intelligence": false,
+        "wisdom": false,
+        "charisma": false
+    }
+}

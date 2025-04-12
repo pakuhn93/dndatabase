@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import characterClasses from "../utils/characterClasses/index";
 
 export default function HP_Calc(){
   const [startingClass, setStartingClass] = useState(0);
+
   const [classHP, setClassHP] = useState(0);
   const [modifierCON, setModifierCON] = useState(0);
   const [levelTotal, setLevelTotal] = useState(0);
@@ -12,8 +14,6 @@ export default function HP_Calc(){
   const [isMulticlass, setIsMulticlass] = useState(false);
 
   const [displayCalc, setDisplayCalc] = useState("[ Calculation will be displayed here. ]");
-  // const displayCalc = 
-  // "[ " + "(Starting class HP = " + startingClass + ") + (HP gained from class after 1st level = " + (classHP*(levelTotal-1) + ") + (HP gained from Constitution modifier = ") + (modifierCON*levelTotal) + ") ]";
 
   const hitDieAvg = (hitDie) => {
     switch(hitDie){
@@ -80,7 +80,6 @@ export default function HP_Calc(){
   }
 
   useEffect(() => {
-
     if(levelTotal > 0){
       let baseHP = startingClass + (classHP*(levelTotal-1)) + (modifierCON*levelTotal);
 
@@ -131,19 +130,14 @@ export default function HP_Calc(){
             <label htmlFor="startingClass">Select your starting class.</label>
             <br></br>
             <select id="startingClass" onChange={updateStartingClass}>
-              <option value="1d8">Artificer</option>
-              <option value="1d12">Barbarian</option>
-              <option value="1d8">Bard</option>
-              <option value="1d8">Cleric</option>
-              <option value="1d8">Druid</option>
-              <option value="1d10">Fighter</option>
-              <option value="1d8">Monk</option>
-              <option value="1d10">Paladin</option>
-              <option value="1d10">Ranger</option>
-              <option value="1d8">Rogue</option>
-              <option value="1d6">Sorcerer</option>
-              <option value="1d8">Warlock</option>
-              <option value="1d6">Wizard</option>
+              {/* Map out the character class options */}
+              {
+                characterClasses.map((characterClass, index) => {
+                  return (
+                    <option value={characterClass.data.hitDie}>{characterClass.data.name}</option>
+                  );
+                })
+              }
             </select>
 
             <br></br>

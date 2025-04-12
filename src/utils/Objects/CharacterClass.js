@@ -9,6 +9,7 @@ class CharacterClass {
     savingThrows = {};
     skillProficiencies = {};
     weaponProficiencies = {};
+    toolProficiencies = {};
     armorTraining = {};
 
     // startingEquipment remains an Array because they're not just T/F like the above values, they will be individual strings
@@ -26,3 +27,4 @@ class CharacterClass {
 
 }
 
+export default CharacterClass;

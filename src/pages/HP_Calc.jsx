@@ -134,7 +134,7 @@ export default function HP_Calc(){
               {
                 characterClasses.map((characterClass, index) => {
                   return (
-                    <option value={characterClass.data.hitDie}>{characterClass.data.name}</option>
+                    <option key={"key_hp_" + index} value={characterClass.data.hitDie}>{characterClass.data.name}</option>
                   );
                 })
               }
